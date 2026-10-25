@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Usage: npx omp-switchyard [anthropic|openai|mix]    (or: bunx omp-switchyard ...)
+// Usage: npx omp-conductor [anthropic|openai|mix]    (or: bunx omp-conductor ...)
 // Installs the plugins and skills, then applies the chosen model setup (default: mix).
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
@@ -11,7 +11,7 @@ const skills = read("skills.json");
 
 const setup = (process.argv[2] ?? "mix").toLowerCase();
 if (!profiles[setup]) {
-  console.error(`Usage: omp-switchyard [${Object.keys(profiles).join("|")}]`);
+  console.error(`Usage: omp-conductor [${Object.keys(profiles).join("|")}]`);
   process.exit(1);
 }
 
@@ -38,16 +38,16 @@ function run(cmd, args, { optional = false, capture = false } = {}) {
 
 run("omp", ["--version"], { capture: true });
 
-console.log(`\n🚂 Switchyard ${pkg.version}: installing plugins`);
+console.log(`\n🎼 Conductor ${pkg.version}: installing plugins`);
 run("omp", ["plugin", "install", "@dietrichgebert/ponytail"]);
-run("omp", ["plugin", "install", process.env.OMP_SWITCHYARD_SPEC ?? `${pkg.name}@${pkg.version}`]);
+run("omp", ["plugin", "install", process.env.OMP_CONDUCTOR_SPEC ?? `${pkg.name}@${pkg.version}`]);
 
-console.log(`\n🚂 Installing skills into ~/.agents/skills`);
+console.log(`\n🎼 Installing skills into ~/.agents/skills`);
 for (const { repo, skills: names } of skills) {
   run("npx", ["-y", "skills", "add", repo, "-g", "-y", "-a", "codex", "--skill", ...names], { optional: true });
 }
 
-console.log(`\n🚂 Applying the "${setup}" model setup`);
+console.log(`\n🎼 Applying the "${setup}" model setup`);
 for (const [key, field] of [["modelRoles", "modelRoles"], ["retry.fallbackChains", "fallbackChains"]]) {
   const current = JSON.parse(run("omp", ["config", "get", key], { capture: true }).trim() || "{}");
   // Merge: only the roles this setup defines are replaced, the user's other roles stay.
@@ -55,11 +55,11 @@ for (const [key, field] of [["modelRoles", "modelRoles"], ["retry.fallbackChains
 }
 
 console.log(`
-✔ Switchyard is on the "${setup}" track — ${profiles[setup].description}
+✔ Conductor is leading with the "${setup}" setup — ${profiles[setup].description}
 
 Next:
   • Jev routing needs a TypeSafe key: export TYPESAFE_API_KEY or add it to ~/.omp/agent/.env
-  • Switch setups inside omp:  /switchyard ${Object.keys(profiles).join(" | ")}
+  • Switch setups inside omp:  /conductor ${Object.keys(profiles).join(" | ")}
   • Router controls:           /jev-route status | on | off | verbose
 
 Built on the work of (thank you!):

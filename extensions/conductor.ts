@@ -12,14 +12,14 @@ const PROFILES: Record<string, Profile> = profiles;
 const NAMES = Object.keys(PROFILES);
 
 /**
- * /switchyard [anthropic|openai|mix]
+ * /conductor [anthropic|openai|mix]
  *
  * Writes the chosen setup's model roles and fallback chains into the global
  * config (only the roles the setup defines; other roles are left alone) and
  * moves the live session onto the new @default model.
  */
-export default function switchyard(pi: ExtensionAPI) {
-  pi.setLabel("Switchyard");
+export default function conductor(pi: ExtensionAPI) {
+  pi.setLabel("Conductor");
 
   const roles = lookup("modelRoles");
   const chains = lookup("retry.fallbackChains");
@@ -33,7 +33,7 @@ export default function switchyard(pi: ExtensionAPI) {
     );
   }
 
-  pi.registerCommand("switchyard", {
+  pi.registerCommand("conductor", {
     description: `Switch the model setup: ${NAMES.join(" | ")}`,
     getArgumentCompletions: (prefix: string) =>
       NAMES.filter((name) => name.startsWith(prefix)).map((name) => ({
@@ -48,8 +48,8 @@ export default function switchyard(pi: ExtensionAPI) {
       if (!profile) {
         ctx.ui.notify(
           [
-            `Switchyard: active setup = ${active()}`,
-            ...NAMES.map((n) => `  /switchyard ${n} — ${PROFILES[n].description}`),
+            `Conductor: active setup = ${active()}`,
+            ...NAMES.map((n) => `  /conductor ${n} — ${PROFILES[n].description}`),
           ].join("\n"),
           name ? "warning" : "info",
         );
@@ -57,7 +57,7 @@ export default function switchyard(pi: ExtensionAPI) {
       }
 
       if (!roles || !chains) {
-        ctx.ui.notify("Switchyard: this omp version has no modelRoles/retry.fallbackChains settings", "error");
+        ctx.ui.notify("Conductor: this omp version has no modelRoles/retry.fallbackChains settings", "error");
         return;
       }
 
@@ -76,7 +76,7 @@ export default function switchyard(pi: ExtensionAPI) {
       }
 
       ctx.ui.notify(
-        `Switchyard: switched to "${name}" — ${profile.description}` +
+        `Conductor: switched to "${name}" — ${profile.description}` +
           (model ? "" : ` (could not resolve ${selector}; log in to that provider, then run /model)`),
         model ? "info" : "warning",
       );

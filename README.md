@@ -1,8 +1,8 @@
-# 🚂 Switchyard
+# 🎼 Conductor
 
-**My [oh-my-pi (omp)](https://github.com/can1357/oh-my-pi) harness, on rails — one command to install, one command to switch tracks.**
+**My [oh-my-pi (omp)](https://github.com/can1357/oh-my-pi) harness as one ensemble — one command to install it, one command to change who plays which part.**
 
-Switchyard is the setup I use every day with omp, packaged so anyone can try it. It is mostly **a curated collection of other people's public plugins and skills** — I did not write those, and full credit goes to their authors ([see Credits](#-credits)). What I added on top:
+Conductor is the setup I use every day with omp, packaged so anyone can try it. It is mostly **a curated collection of other people's public plugins and skills** — I did not write those, and full credit goes to their authors ([see Credits](#-credits)). What I added on top:
 
 - **Jev Router** — my own omp extension that uses [TypeSafe Jev](https://typesafe.ai) to decide, per prompt and per subagent, how much model each piece of work actually needs.
 - **Three model setups** — Claude-only, ChatGPT-only, and a mix where a thinker model orchestrates and a coder model writes the code — switchable with one command.
@@ -13,12 +13,12 @@ Switchyard is the setup I use every day with omp, packaged so anyone can try it.
 You need [omp](https://github.com/can1357/oh-my-pi) installed, plus Node.js (for `npx`) or Bun (for `bunx`), and `git`.
 
 ```sh
-npx omp-switchyard            # the "mix" setup (default)
-npx omp-switchyard anthropic  # Claude only
-npx omp-switchyard openai     # ChatGPT / Codex only
+npx omp-conductor            # the "mix" setup (default)
+npx omp-conductor anthropic  # Claude only
+npx omp-conductor openai     # ChatGPT / Codex only
 
 # or with bun
-bunx omp-switchyard mix
+bunx omp-conductor mix
 ```
 
 Then, inside omp:
@@ -32,7 +32,7 @@ Re-running the installer is safe; it updates everything and re-applies the setup
 
 | Piece | Where it comes from | What it does |
 | --- | --- | --- |
-| `omp-switchyard` plugin | this repo | Jev Router, the `/switchyard` command, the `smart-commit` agent |
+| `omp-conductor` plugin | this repo | Jev Router, the `/conductor` command, the `smart-commit` agent |
 | `@dietrichgebert/ponytail` plugin | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | "Lazy senior dev" mode: smallest complete change, `/ponytail`, review/audit commands |
 | 52 skills into `~/.agents/skills` | the repos listed in [`skills.json`](./skills.json), via [`skills`](https://github.com/vercel-labs/skills) | Expo, HyperFrames video, Sanity, UI/animation craft, CodeRabbit review, and more |
 | model roles + fallback chains | [`profiles.json`](./profiles.json) | written into your omp `config.yml` (only the roles listed; your other roles stay) |
@@ -44,13 +44,13 @@ Skills are installed straight from their original repositories, so you always ge
 Switch at any time inside omp:
 
 ```text
-/switchyard            # show the active setup and the choices
-/switchyard anthropic
-/switchyard openai
-/switchyard mix
+/conductor            # show the active setup and the choices
+/conductor anthropic
+/conductor openai
+/conductor mix
 ```
 
-It rewrites the setup's roles and fallback chains in your global config and moves the current session onto the new `@default` model. Re-running `npx omp-switchyard <setup>` from a shell does the same.
+It rewrites the setup's roles and fallback chains in your global config and moves the current session onto the new `@default` model. Re-running `npx omp-conductor <setup>` from a shell does the same.
 
 | Role | `anthropic` | `openai` | `mix` |
 | --- | --- | --- | --- |
@@ -106,14 +106,14 @@ A 🧭 `jev: ON` indicator in the status line shows whether it is active and has
 
 ## Customizing
 
-- Change any role with omp's `/model` (Roles view). `/switchyard` shows `custom` once your roles no longer match a setup exactly.
+- Change any role with omp's `/model` (Roles view). `/conductor` shows `custom` once your roles no longer match a setup exactly.
 - Fork this repo and edit [`profiles.json`](./profiles.json) to ship your own setups; the command, installer, and router read it, so nothing else needs to change.
 - Tune the router's thresholds in the `CONFIG` block at the top of [`extensions/jev-router.ts`](./extensions/jev-router.ts).
 
 ## Uninstall
 
 ```sh
-omp plugin uninstall omp-switchyard
+omp plugin uninstall omp-conductor
 omp plugin uninstall @dietrichgebert/ponytail   # if you don't want ponytail either
 npx skills remove -g                            # pick skills to remove
 ```
@@ -122,7 +122,7 @@ Your model roles stay as they are; change them with `/model`.
 
 ## 🙏 Credits
 
-Switchyard is glue. The real work is by these people and teams:
+Conductor is glue. The real work is by these people and teams:
 
 | Project | Author | Used for |
 | --- | --- | --- |
@@ -138,8 +138,8 @@ Switchyard is glue. The real work is by these people and teams:
 | [coderabbitai/skills](https://github.com/coderabbitai/skills) | CodeRabbit | code review and autofix skills |
 | [Exa](https://exa.ai) | Exa | web search (`web` role) |
 
-Each of those projects keeps its own license; Switchyard does not copy their code — it installs them from their original sources.
+Each of those projects keeps its own license; Conductor does not copy their code — it installs them from their original sources.
 
 ## License
 
-[MIT](./LICENSE) for the Switchyard code (Jev Router, `/switchyard`, installer, setups).
+[MIT](./LICENSE) for the Conductor code (Jev Router, `/conductor`, installer, setups).
