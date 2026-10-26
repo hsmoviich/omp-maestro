@@ -3,7 +3,7 @@
 // Installs the plugins and skills, then applies the chosen model setup (default: mix).
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
-import { createInterface } from "node:readline/promises";
+import { emitKeypressEvents } from "node:readline";
 
 const read = (file) => JSON.parse(readFileSync(new URL(`../${file}`, import.meta.url), "utf8"));
 const pkg = read("package.json");
@@ -37,29 +37,57 @@ function run(cmd, args, { optional = false, capture = false } = {}) {
   process.exit(result.status ?? 1);
 }
 
-// Ask which skill libraries to install. Non-interactive runs (CI, piped input) get all of them.
-async function pickSkillLibraries() {
-  console.log(`\n🎼 Skill libraries (installed into ~/.agents/skills):\n`);
-  skills.forEach(({ repo, description, skills: names }, i) =>
-    console.log(`  ${i + 1}. ${repo} (${names.length}) — ${description}`),
-  );
-  if (!process.stdin.isTTY) return skills;
-
-  const rl = createInterface({ input: process.stdin, output: process.stdout });
-  try {
-    for (;;) {
-      const answer = (await rl.question("\nInstall which? e.g. 1,3,6 · Enter = all · none = skip: ")).trim().toLowerCase();
-      if (!answer || answer === "all") return skills;
-      if (answer === "none") return [];
-      const picks = answer.split(/[\s,]+/).map(Number);
-      if (picks.every((n) => Number.isInteger(n) && n >= 1 && n <= skills.length)) {
-        return skills.filter((_, i) => picks.includes(i + 1));
-      }
-      console.log(`  Please enter numbers from 1 to ${skills.length}, "all", or "none".`);
-    }
-  } finally {
-    rl.close();
+// Checklist of skill libraries: ↑/↓ move, space toggles, enter confirms. All start selected.
+// Non-interactive runs (CI, piped input) get all of them.
+function pickSkillLibraries() {
+  console.log(`\n🎼 Skill libraries (installed into ~/.agents/skills)`);
+  const lines = skills.map(({ repo, description, skills: names }) => `${repo} (${names.length}) — ${description}`);
+  if (!process.stdin.isTTY) {
+    for (const line of lines) console.log(`  ◉ ${line}`);
+    return Promise.resolve(skills);
   }
+
+  console.log(`   ↑/↓ move · space select/deselect · enter confirm\n`);
+  const selected = skills.map(() => true);
+  let cursor = 0;
+  const render = (redraw) => {
+    // Rows are cut to the terminal width so none wrap and the redraw stays aligned.
+    const width = (process.stdout.columns || 80) - 1;
+    if (redraw) process.stdout.write(`\x1b[${lines.length}A`);
+    lines.forEach((line, i) => {
+      const row = `${i === cursor ? "❯" : " "} ${selected[i] ? "◉" : "◯"} ${line}`;
+      process.stdout.write(`\x1b[2K${row.slice(0, width)}\n`);
+    });
+  };
+  render(false);
+
+  emitKeypressEvents(process.stdin);
+  process.stdin.setRawMode(true);
+  process.stdin.resume();
+  return new Promise((resolve) => {
+    const done = () => {
+      process.stdin.off("keypress", onKey);
+      process.stdin.setRawMode(false);
+      process.stdin.pause();
+    };
+    const onKey = (_text, key = {}) => {
+      if (key.ctrl && key.name === "c") {
+        done();
+        process.exit(130);
+      }
+      if (key.name === "up") cursor = (cursor + lines.length - 1) % lines.length;
+      else if (key.name === "down") cursor = (cursor + 1) % lines.length;
+      else if (key.name === "space") selected[cursor] = !selected[cursor];
+      else if (key.name === "return" || key.name === "enter") {
+        done();
+        const chosen = skills.filter((_, i) => selected[i]);
+        console.log(`\n  ${chosen.length ? `Selected: ${chosen.map((s) => s.repo).join(", ")}` : "No skill libraries selected"}`);
+        return resolve(chosen);
+      } else return;
+      render(true);
+    };
+    process.stdin.on("keypress", onKey);
+  });
 }
 
 run("omp", ["--version"], { capture: true });
