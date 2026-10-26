@@ -62,7 +62,7 @@ npx omp-maestro openai       # 🟢 ChatGPT / Codex only
 bunx omp-maestro mix         # same thing, with bun
 ```
 
-The installer first checks what you already have — and stops with a clear message if omp is missing. Then it asks one question, which skill libraries you want, and runs unattended:
+The installer first checks what you already have. Missing **omp** or **git**? It offers to install them for you — omp through the same tool you launched it with (`bunx` → `bun install -g`, `npx` → `npm install -g`, or omp's official installer when Bun isn't there), git through your system's package manager (winget, Homebrew, apt, dnf, pacman, …). Nothing is installed without a yes. Then it asks one question, which skill libraries you want, and runs unattended:
 
 ```text
 🎼 Maestro 0.1.0: checking your setup
