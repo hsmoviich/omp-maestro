@@ -12,14 +12,14 @@ const PROFILES: Record<string, Profile> = profiles;
 const NAMES = Object.keys(PROFILES);
 
 /**
- * /conductor [anthropic|openai|mix]
+ * /maestro [anthropic|openai|mix]
  *
  * Writes the chosen setup's model roles and fallback chains into the global
  * config (only the roles the setup defines; other roles are left alone) and
  * moves the live session onto the new @default model.
  */
-export default function conductor(pi: ExtensionAPI) {
-  pi.setLabel("Conductor");
+export default function maestro(pi: ExtensionAPI) {
+  pi.setLabel("Maestro");
 
   const roles = lookup("modelRoles");
   const chains = lookup("retry.fallbackChains");
@@ -33,7 +33,7 @@ export default function conductor(pi: ExtensionAPI) {
     );
   }
 
-  pi.registerCommand("conductor", {
+  pi.registerCommand("maestro", {
     description: `Switch the model setup: ${NAMES.join(" | ")}`,
     getArgumentCompletions: (prefix: string) =>
       NAMES.filter((name) => name.startsWith(prefix)).map((name) => ({
@@ -48,8 +48,8 @@ export default function conductor(pi: ExtensionAPI) {
       if (!profile) {
         ctx.ui.notify(
           [
-            `Conductor: active setup = ${active()}`,
-            ...NAMES.map((n) => `  /conductor ${n} — ${PROFILES[n].description}`),
+            `Maestro: active setup = ${active()}`,
+            ...NAMES.map((n) => `  /maestro ${n} — ${PROFILES[n].description}`),
           ].join("\n"),
           name ? "warning" : "info",
         );
@@ -57,7 +57,7 @@ export default function conductor(pi: ExtensionAPI) {
       }
 
       if (!roles || !chains) {
-        ctx.ui.notify("Conductor: this omp version has no modelRoles/retry.fallbackChains settings", "error");
+        ctx.ui.notify("Maestro: this omp version has no modelRoles/retry.fallbackChains settings", "error");
         return;
       }
 
@@ -76,7 +76,7 @@ export default function conductor(pi: ExtensionAPI) {
       }
 
       ctx.ui.notify(
-        `Conductor: switched to "${name}" — ${profile.description}` +
+        `Maestro: switched to "${name}" — ${profile.description}` +
           (model ? "" : ` (could not resolve ${selector}; log in to that provider, then run /model)`),
         model ? "info" : "warning",
       );

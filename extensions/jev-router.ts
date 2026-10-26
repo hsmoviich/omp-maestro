@@ -114,7 +114,7 @@ const FORCE_ARCHITECTURE_SUBAGENT_PATTERN =
   /\b(?:design|redesign|migrat(?:e|ion)|replace|implement|modify|change|deploy|write|delete|rotate|revoke|alter|refactor|cutover|rollback)\b[\s\S]{0,160}\b(?:security|authentication|authorization|permissions?|database|schema|production|credentials?|secrets?|payments?|concurrency|race condition|data loss)\b|\b(?:security|authentication|authorization|permissions?|database|schema|production|credentials?|secrets?|payments?|concurrency|race condition|data loss)\b[\s\S]{0,160}\b(?:design|redesign|migrat(?:e|ion)|replace|implement|modify|change|deploy|write|delete|rotate|revoke|alter|refactor|cutover|rollback)\b/i;
 /**
  * Each worker class runs on its own model role (`jev-mechanical`,
- * `jev-bounded`, `jev-reasoning`, `jev-architecture`), so every Conductor
+ * `jev-bounded`, `jev-reasoning`, `jev-architecture`), so every Maestro
  * model setup supplies its own worker models. The role's
  * `retry.fallbackChains` entry becomes the child's fallback chain.
  */

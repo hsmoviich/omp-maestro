@@ -1,5 +1,5 @@
 {
-  "name": "omp-conductor",
+  "name": "omp-maestro",
   "version": "0.1.0",
   "description": "My oh-my-pi (omp) harness in one command: a curated collection of public plugins and skills, my Jev router, and switchable Claude / ChatGPT / mixed model setups.",
   "keywords": ["omp", "oh-my-pi", "omp-plugin", "pi-package", "jev", "typesafe", "model-router", "claude", "codex"],
@@ -8,17 +8,17 @@
     "name": "hsmoviich",
     "url": "https://github.com/hsmoviich"
   },
-  "homepage": "https://github.com/hsmoviich/omp-conductor#readme",
+  "homepage": "https://github.com/hsmoviich/omp-maestro#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hsmoviich/omp-conductor.git"
+    "url": "git+https://github.com/hsmoviich/omp-maestro.git"
   },
   "bugs": {
-    "url": "https://github.com/hsmoviich/omp-conductor/issues"
+    "url": "https://github.com/hsmoviich/omp-maestro/issues"
   },
   "type": "module",
   "bin": {
-    "omp-conductor": "bin/omp-conductor.mjs"
+    "omp-maestro": "bin/omp-maestro.mjs"
   },
   "files": [
     "bin/",
@@ -30,7 +30,7 @@
     "LICENSE"
   ],
   "omp": {
-    "extensions": ["./extensions/jev-router.ts", "./extensions/conductor.ts"]
+    "extensions": ["./extensions/jev-router.ts", "./extensions/maestro.ts"]
   },
   "dependencies": {
     "@typesafe-ai/sdk": "^0.6.0"

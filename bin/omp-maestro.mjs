@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Usage: npx omp-conductor [anthropic|openai|mix]    (or: bunx omp-conductor ...)
+// Usage: npx omp-maestro [anthropic|openai|mix]    (or: bunx omp-maestro ...)
 // Installs the plugins and skills, then applies the chosen model setup (default: mix).
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
@@ -12,7 +12,7 @@ const skills = read("skills.json");
 
 const setup = (process.argv[2] ?? "mix").toLowerCase();
 if (!profiles[setup]) {
-  console.error(`Usage: omp-conductor [${Object.keys(profiles).join("|")}]`);
+  console.error(`Usage: omp-maestro [${Object.keys(profiles).join("|")}]`);
   process.exit(1);
 }
 
@@ -95,9 +95,9 @@ run("omp", ["--version"], { capture: true });
 // Ask up front so the rest of the install runs unattended.
 const chosenSkills = await pickSkillLibraries();
 
-console.log(`\n🎼 Conductor ${pkg.version}: installing plugins`);
+console.log(`\n🎼 Maestro ${pkg.version}: installing plugins`);
 run("omp", ["plugin", "install", "@dietrichgebert/ponytail"]);
-run("omp", ["plugin", "install", process.env.OMP_CONDUCTOR_SPEC ?? `${pkg.name}@${pkg.version}`]);
+run("omp", ["plugin", "install", process.env.OMP_MAESTRO_SPEC ?? `${pkg.name}@${pkg.version}`]);
 
 if (chosenSkills.length) console.log(`\n🎼 Installing skills into ~/.agents/skills`);
 for (const { repo, skills: names } of chosenSkills) {
@@ -112,11 +112,11 @@ for (const [key, field] of [["modelRoles", "modelRoles"], ["retry.fallbackChains
 }
 
 console.log(`
-✔ Conductor is leading with the "${setup}" setup — ${profiles[setup].description}
+✔ Maestro is leading with the "${setup}" setup — ${profiles[setup].description}
 
 Next:
   • Jev routing needs a TypeSafe key: export TYPESAFE_API_KEY or add it to ~/.omp/agent/.env
-  • Switch setups inside omp:  /conductor ${Object.keys(profiles).join(" | ")}
+  • Switch setups inside omp:  /maestro ${Object.keys(profiles).join(" | ")}
   • Router controls:           /jev-route status | on | off | verbose
 
 Built on the work of (thank you!):
