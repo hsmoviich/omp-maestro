@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 440" width="1280" height="440" role="img" aria-labelledby="t d">
+  <title id="t">Maestro</title>
+  <desc id="d">Maestro: one command to install a complete oh-my-pi harness. Claude, GPT and Jev play as one ensemble.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0C16"/>
+      <stop offset="1" stop-color="#141632"/>
+    </linearGradient>
+    <radialGradient id="glowClaude" cx="0.12" cy="0.95" r="0.55">
+      <stop offset="0" stop-color="#E07A5F" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#E07A5F" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowGpt" cx="0.92" cy="0.05" r="0.5">
+      <stop offset="0" stop-color="#19C39C" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#19C39C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowJev" cx="0.6" cy="0.75" r="0.45">
+      <stop offset="0" stop-color="#8B6CF6" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#8B6CF6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#C9C6FF"/>
+    </linearGradient>
+    <linearGradient id="baton" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#F4E9D8"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.2"/>
+    </linearGradient>
+    <clipPath id="card"><rect width="1280" height="440" rx="28"/></clipPath>
+    <style>
+      .ui { font-family: ui-sans-serif, -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif; }
+      .serif { font-family: ui-serif, "New York", Georgia, "Times New Roman", serif; }
+      .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+      .rise { animation: rise 900ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+      .d1 { animation-delay: 80ms; } .d2 { animation-delay: 160ms; } .d3 { animation-delay: 240ms; } .d4 { animation-delay: 320ms; }
+      .note { animation: bob 3.2s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate; transform-box: fill-box; transform-origin: center; }
+      .n2 { animation-delay: -0.4s; } .n3 { animation-delay: -0.8s; } .n4 { animation-delay: -1.2s; } .n5 { animation-delay: -1.6s; }
+      .n6 { animation-delay: -2.0s; } .n7 { animation-delay: -2.4s; } .n8 { animation-delay: -2.8s; }
+      .baton { animation: sweep 4.8s cubic-bezier(0.77, 0, 0.175, 1) infinite alternate; transform-origin: 1188px 214px; }
+      @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+      @keyframes bob { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+      @keyframes sweep { from { transform: rotate(-7deg); } to { transform: rotate(5deg); } }
+      @media (prefers-reduced-motion: reduce) {
+        .note, .baton { animation: none; }
+        .rise { animation: fade 400ms ease both; }
+        @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+      }
+    </style>
+  </defs>
+
+  <g clip-path="url(#card)">
+    <rect width="1280" height="440" fill="url(#bg)"/>
+    <rect width="1280" height="440" fill="url(#glowClaude)"/>
+    <rect width="1280" height="440" fill="url(#glowGpt)"/>
+    <rect width="1280" height="440" fill="url(#glowJev)"/>
+
+    <!-- staff -->
+    <g stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="1.5">
+      <line x1="0" y1="300" x2="1280" y2="300"/>
+      <line x1="0" y1="316" x2="1280" y2="316"/>
+      <line x1="0" y1="332" x2="1280" y2="332"/>
+      <line x1="0" y1="348" x2="1280" y2="348"/>
+      <line x1="0" y1="364" x2="1280" y2="364"/>
+    </g>
+
+    <!-- notes: coral = Claude, teal = GPT, violet = Jev -->
+    <g>
+      <g class="note"><ellipse cx="660" cy="340" rx="10" ry="7.5" fill="#E07A5F" transform="rotate(-22 660 340)"/><line x1="669" y1="338" x2="669" y2="290" stroke="#E07A5F" stroke-width="2.5"/></g>
+      <g class="note n2"><ellipse cx="716" cy="324" rx="10" ry="7.5" fill="#19C39C" transform="rotate(-22 716 324)"/><line x1="725" y1="322" x2="725" y2="274" stroke="#19C39C" stroke-width="2.5"/></g>
+      <g class="note n3"><ellipse cx="772" cy="356" rx="10" ry="7.5" fill="#19C39C" transform="rotate(-22 772 356)"/><line x1="781" y1="354" x2="781" y2="306" stroke="#19C39C" stroke-width="2.5"/></g>
+      <g class="note n4"><ellipse cx="828" cy="308" rx="10" ry="7.5" fill="#8B6CF6" transform="rotate(-22 828 308)"/><line x1="837" y1="306" x2="837" y2="258" stroke="#8B6CF6" stroke-width="2.5"/></g>
+      <g class="note n5"><ellipse cx="884" cy="332" rx="10" ry="7.5" fill="#E07A5F" transform="rotate(-22 884 332)"/><line x1="893" y1="330" x2="893" y2="282" stroke="#E07A5F" stroke-width="2.5"/></g>
+      <g class="note n6"><ellipse cx="940" cy="316" rx="10" ry="7.5" fill="#19C39C" transform="rotate(-22 940 316)"/><line x1="949" y1="314" x2="949" y2="266" stroke="#19C39C" stroke-width="2.5"/></g>
+      <g class="note n7"><ellipse cx="996" cy="348" rx="10" ry="7.5" fill="#8B6CF6" transform="rotate(-22 996 348)"/><line x1="1005" y1="346" x2="1005" y2="298" stroke="#8B6CF6" stroke-width="2.5"/></g>
+      <g class="note n8"><ellipse cx="1052" cy="324" rx="10" ry="7.5" fill="#E07A5F" transform="rotate(-22 1052 324)"/><line x1="1061" y1="322" x2="1061" y2="274" stroke="#E07A5F" stroke-width="2.5"/></g>
+    </g>
+
+    <!-- baton -->
+    <g class="baton">
+      <line x1="1188" y1="214" x2="1052" y2="96" stroke="url(#baton)" stroke-width="4" stroke-linecap="round"/>
+      <rect x="1180" y="198" width="22" height="40" rx="10" fill="#F4E9D8" transform="rotate(-41 1191 218)"/>
+      <circle cx="1046" cy="90" r="3" fill="#FFFFFF" fill-opacity="0.9"/>
+    </g>
+    <g fill="#FFFFFF">
+      <circle cx="1020" cy="120" r="1.6" fill-opacity="0.55"/>
+      <circle cx="1004" cy="152" r="1.2" fill-opacity="0.35"/>
+      <circle cx="1072" cy="62" r="1.4" fill-opacity="0.45"/>
+    </g>
+
+    <!-- copy -->
+    <text class="ui rise" x="84" y="104" font-size="15" font-weight="600" letter-spacing="4.5" fill="#9A9CB8">AN OH-MY-PI HARNESS · IN ONE COMMAND</text>
+    <text class="serif rise d1" x="78" y="214" font-size="118" font-weight="600" letter-spacing="-3" fill="url(#title)">Maestro</text>
+    <text class="ui rise d2" x="84" y="262" font-size="25" fill="#C9CBDA">Claude thinks. GPT codes. Jev decides who plays.</text>
+
+    <!-- legend -->
+    <g class="ui rise d3" font-size="15" fill="#A9ABC4">
+      <circle cx="90" cy="394" r="6" fill="#E07A5F"/><text x="104" y="399">Claude</text>
+      <circle cx="184" cy="394" r="6" fill="#19C39C"/><text x="198" y="399">GPT</text>
+      <circle cx="258" cy="394" r="6" fill="#8B6CF6"/><text x="272" y="399">TypeSafe Jev</text>
+    </g>
+
+    <!-- install pill -->
+    <g class="rise d4">
+      <rect x="958" y="370" width="262" height="46" rx="23" fill="#FFFFFF" fill-opacity="0.06" stroke="#FFFFFF" stroke-opacity="0.14"/>
+      <text class="mono" x="984" y="399" font-size="17" fill="#E9E8FF"><tspan fill="#19C39C">$</tspan> npx omp-maestro</text>
+    </g>
+  </g>
+  <rect x="0.75" y="0.75" width="1278.5" height="438.5" rx="27.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.5"/>
+</svg>

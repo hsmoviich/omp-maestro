@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 540" width="1280" height="540" role="img" aria-labelledby="t d">
+  <title id="t">The three Maestro ensembles</title>
+  <desc id="d">anthropic: Claude Opus leads, Claude Sonnet codes and designs, Claude Haiku takes small parts. openai: GPT-6.1 Sol leads, codes and designs, GPT-6 Luna takes small parts. mix (default): Claude Opus leads, GPT-6.1 Sol codes, Claude Sonnet designs, GPT-6 Luna takes small parts.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B0C16"/><stop offset="1" stop-color="#141632"/></linearGradient>
+    <linearGradient id="mixEdge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E07A5F"/><stop offset="0.5" stop-color="#8B6CF6"/><stop offset="1" stop-color="#19C39C"/></linearGradient>
+    <radialGradient id="mixGlow" cx="0.5" cy="0" r="0.9"><stop offset="0" stop-color="#8B6CF6" stop-opacity="0.22"/><stop offset="1" stop-color="#8B6CF6" stop-opacity="0"/></radialGradient>
+    <style>
+      .ui { font-family: ui-sans-serif, -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif; }
+      .serif { font-family: ui-serif, "New York", Georgia, "Times New Roman", serif; }
+      .mono { font-family: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace; }
+      .label { font-size: 13px; font-weight: 600; letter-spacing: 2px; fill: #8D90AC; }
+      .model { font-size: 21px; font-weight: 600; fill: #F2F2FA; }
+      .sub { font-size: 15px; fill: #A9ABC4; }
+      .card { fill: #FFFFFF; fill-opacity: 0.035; stroke: #FFFFFF; stroke-opacity: 0.1; stroke-width: 1.5; }
+      .rule { stroke: #FFFFFF; stroke-opacity: 0.07; stroke-width: 1.5; }
+    </style>
+  </defs>
+  <rect width="1280" height="540" rx="28" fill="url(#bg)"/>
+  <g transform="translate(40 40)">
+    <rect class="card" width="378" height="460" rx="22"/>
+    <text class="serif" x="30" y="58" font-size="34" font-weight="600" fill="#FFFFFF">anthropic</text>
+    <text class="ui sub" x="30" y="86">Claude only</text>
+    <line class="rule" x1="30" y1="110" x2="348" y2="110"/>
+    <g class="ui">
+      <text class="label" x="30" y="146">LEADS &amp; PLANS</text>
+      <circle cx="38" cy="172" r="6" fill="#E07A5F"/><text class="model" x="54" y="179">Claude Opus 5.5</text>
+      <text class="label" x="30" y="216">WRITES THE CODE</text>
+      <circle cx="38" cy="242" r="6" fill="#E07A5F"/><text class="model" x="54" y="249">Claude Sonnet 5.5</text>
+      <text class="label" x="30" y="286">DESIGN &amp; VISION</text>
+      <circle cx="38" cy="312" r="6" fill="#E07A5F"/><text class="model" x="54" y="319">Claude Sonnet 5.5</text>
+      <text class="label" x="30" y="356">SMALL PARTS</text>
+      <circle cx="38" cy="382" r="6" fill="#E07A5F"/><text class="model" x="54" y="389">Claude Haiku 5.5</text>
+    </g>
+    <line class="rule" x1="30" y1="408" x2="348" y2="408"/>
+    <text class="mono" x="30" y="440" font-size="16" fill="#C9CBDA"><tspan fill="#8B6CF6">/</tspan>maestro anthropic</text>
+  </g>
+  <g transform="translate(451 40)">
+    <rect class="card" width="378" height="460" rx="22"/>
+    <text class="serif" x="30" y="58" font-size="34" font-weight="600" fill="#FFFFFF">openai</text>
+    <text class="ui sub" x="30" y="86">ChatGPT / Codex only</text>
+    <line class="rule" x1="30" y1="110" x2="348" y2="110"/>
+    <g class="ui">
+      <text class="label" x="30" y="146">LEADS &amp; PLANS</text>
+      <circle cx="38" cy="172" r="6" fill="#19C39C"/><text class="model" x="54" y="179">GPT-6.1 Sol</text>
+      <text class="label" x="30" y="216">WRITES THE CODE</text>
+      <circle cx="38" cy="242" r="6" fill="#19C39C"/><text class="model" x="54" y="249">GPT-6.1 Sol</text>
+      <text class="label" x="30" y="286">DESIGN &amp; VISION</text>
+      <circle cx="38" cy="312" r="6" fill="#19C39C"/><text class="model" x="54" y="319">GPT-6.1 Sol</text>
+      <text class="label" x="30" y="356">SMALL PARTS</text>
+      <circle cx="38" cy="382" r="6" fill="#19C39C"/><text class="model" x="54" y="389">GPT-6 Luna</text>
+    </g>
+    <line class="rule" x1="30" y1="408" x2="348" y2="408"/>
+    <text class="mono" x="30" y="440" font-size="16" fill="#C9CBDA"><tspan fill="#8B6CF6">/</tspan>maestro openai</text>
+  </g>
+  <g transform="translate(862 40)">
+    <rect width="378" height="460" rx="22" fill="url(#mixGlow)"/>
+    <rect width="378" height="460" rx="22" fill="#FFFFFF" fill-opacity="0.045" stroke="url(#mixEdge)" stroke-width="2"/>
+    <rect x="270" y="34" width="84" height="28" rx="14" fill="#8B6CF6" fill-opacity="0.22" stroke="#8B6CF6" stroke-opacity="0.6"/>
+    <text class="ui" x="312" y="53" font-size="13" font-weight="700" letter-spacing="1.5" fill="#D9D0FF" text-anchor="middle">DEFAULT</text>
+    <text class="serif" x="30" y="58" font-size="34" font-weight="600" fill="#FFFFFF">mix</text>
+    <text class="ui sub" x="30" y="86">Each model where it’s strongest</text>
+    <line class="rule" x1="30" y1="110" x2="348" y2="110"/>
+    <g class="ui">
+      <text class="label" x="30" y="146">LEADS &amp; PLANS</text>
+      <circle cx="38" cy="172" r="6" fill="#E07A5F"/><text class="model" x="54" y="179">Claude Opus 5.5</text>
+      <text class="label" x="30" y="216">WRITES THE CODE</text>
+      <circle cx="38" cy="242" r="6" fill="#19C39C"/><text class="model" x="54" y="249">GPT-6.1 Sol</text>
+      <text class="label" x="30" y="286">DESIGN &amp; VISION</text>
+      <circle cx="38" cy="312" r="6" fill="#E07A5F"/><text class="model" x="54" y="319">Claude Sonnet 5.5</text>
+      <text class="label" x="30" y="356">SMALL PARTS</text>
+      <circle cx="38" cy="382" r="6" fill="#19C39C"/><text class="model" x="54" y="389">GPT-6 Luna</text>
+    </g>
+    <line class="rule" x1="30" y1="408" x2="348" y2="408"/>
+    <text class="mono" x="30" y="440" font-size="16" fill="#C9CBDA"><tspan fill="#8B6CF6">/</tspan>maestro mix</text>
+  </g>
+  <rect x="0.75" y="0.75" width="1278.5" height="538.5" rx="27.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.5"/>
+</svg>
