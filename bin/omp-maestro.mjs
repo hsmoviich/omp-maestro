@@ -37,6 +37,33 @@ function run(cmd, args, { optional = false, capture = false } = {}) {
   process.exit(result.status ?? 1);
 }
 
+// First line of `<cmd> --version`, or null when the command is missing or fails.
+function probe(cmd) {
+  const result = spawnSync(win ? `${cmd} --version` : cmd, win ? [] : ["--version"], {
+    shell: win,
+    encoding: "utf8",
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  return result.status === 0 ? (result.stdout || result.stderr).trim().split("\n")[0] : null;
+}
+
+// Check what's installed before touching anything: omp is required, git + npx only for skills.
+function preflight() {
+  console.log(`\n🎼 Maestro ${pkg.version}: checking your setup\n`);
+  const omp = probe("omp");
+  const git = probe("git");
+  const npx = probe("npx");
+  console.log(omp ? `  ✔ omp is installed (${omp})` : `  ✖ omp not found`);
+  console.log(git ? `  ✔ git (${git.replace(/^git version /, "")})` : `  ⚠ git not found — needed to install skills`);
+  console.log(npx ? `  ✔ npx (${npx})` : `  ⚠ npx not found — needed to install skills (comes with Node.js)`);
+  if (!omp) {
+    console.error(`\n✖ Install omp first (https://github.com/can1357/oh-my-pi), make sure \`omp --version\` works, then run this again.`);
+    process.exit(1);
+  }
+  if (!git || !npx) console.warn(`\n  Skills will be skipped; plugins and the model setup still install.`);
+  return Boolean(git && npx);
+}
+
 // Checklist of skill libraries: ↑/↓ move, space toggles, enter confirms. All start selected.
 // Non-interactive runs (CI, piped input) get all of them.
 function pickSkillLibraries() {
@@ -90,12 +117,12 @@ function pickSkillLibraries() {
   });
 }
 
-run("omp", ["--version"], { capture: true });
+const canInstallSkills = preflight();
 
 // Ask up front so the rest of the install runs unattended.
-const chosenSkills = await pickSkillLibraries();
+const chosenSkills = canInstallSkills ? await pickSkillLibraries() : [];
 
-console.log(`\n🎼 Maestro ${pkg.version}: installing plugins`);
+console.log(`\n🎼 Installing plugins`);
 run("omp", ["plugin", "install", "@dietrichgebert/ponytail"]);
 run("omp", ["plugin", "install", process.env.OMP_MAESTRO_SPEC ?? `${pkg.name}@${pkg.version}`]);
 

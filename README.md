@@ -62,9 +62,15 @@ npx omp-maestro openai       # 🟢 ChatGPT / Codex only
 bunx omp-maestro mix         # same thing, with bun
 ```
 
-The installer asks one question up front — which skill libraries you want — then runs unattended:
+The installer first checks what you already have — and stops with a clear message if omp is missing. Then it asks one question, which skill libraries you want, and runs unattended:
 
 ```text
+🎼 Maestro 0.1.0: checking your setup
+
+  ✔ omp is installed (omp/18.12.6)
+  ✔ git (2.52.0)
+  ✔ npx (11.19.0)
+
 🎼 Skill libraries (installed into ~/.agents/skills)
    ↑/↓ move · space select/deselect · enter confirm
 
