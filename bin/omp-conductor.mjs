@@ -3,6 +3,7 @@
 // Installs the plugins and skills, then applies the chosen model setup (default: mix).
 import { spawnSync } from "node:child_process";
 import { readFileSync } from "node:fs";
+import { createInterface } from "node:readline/promises";
 
 const read = (file) => JSON.parse(readFileSync(new URL(`../${file}`, import.meta.url), "utf8"));
 const pkg = read("package.json");
@@ -36,14 +37,42 @@ function run(cmd, args, { optional = false, capture = false } = {}) {
   process.exit(result.status ?? 1);
 }
 
+// Ask which skill libraries to install. Non-interactive runs (CI, piped input) get all of them.
+async function pickSkillLibraries() {
+  console.log(`\n🎼 Skill libraries (installed into ~/.agents/skills):\n`);
+  skills.forEach(({ repo, description, skills: names }, i) =>
+    console.log(`  ${i + 1}. ${repo} (${names.length}) — ${description}`),
+  );
+  if (!process.stdin.isTTY) return skills;
+
+  const rl = createInterface({ input: process.stdin, output: process.stdout });
+  try {
+    for (;;) {
+      const answer = (await rl.question("\nInstall which? e.g. 1,3,6 · Enter = all · none = skip: ")).trim().toLowerCase();
+      if (!answer || answer === "all") return skills;
+      if (answer === "none") return [];
+      const picks = answer.split(/[\s,]+/).map(Number);
+      if (picks.every((n) => Number.isInteger(n) && n >= 1 && n <= skills.length)) {
+        return skills.filter((_, i) => picks.includes(i + 1));
+      }
+      console.log(`  Please enter numbers from 1 to ${skills.length}, "all", or "none".`);
+    }
+  } finally {
+    rl.close();
+  }
+}
+
 run("omp", ["--version"], { capture: true });
+
+// Ask up front so the rest of the install runs unattended.
+const chosenSkills = await pickSkillLibraries();
 
 console.log(`\n🎼 Conductor ${pkg.version}: installing plugins`);
 run("omp", ["plugin", "install", "@dietrichgebert/ponytail"]);
 run("omp", ["plugin", "install", process.env.OMP_CONDUCTOR_SPEC ?? `${pkg.name}@${pkg.version}`]);
 
-console.log(`\n🎼 Installing skills into ~/.agents/skills`);
-for (const { repo, skills: names } of skills) {
+if (chosenSkills.length) console.log(`\n🎼 Installing skills into ~/.agents/skills`);
+for (const { repo, skills: names } of chosenSkills) {
   run("npx", ["-y", "skills", "add", repo, "-g", "-y", "-a", "codex", "--skill", ...names], { optional: true });
 }
 

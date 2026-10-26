@@ -1,6 +1,7 @@
 [
   {
     "repo": "coderabbitai/skills",
+    "description": "CodeRabbit code review and auto-fixing of PR review comments",
     "skills": [
       "autofix",
       "code-review"
@@ -8,12 +9,14 @@
   },
   {
     "repo": "vercel-labs/skills",
+    "description": "find-skills: search and install more skills when you need a new capability",
     "skills": [
       "find-skills"
     ]
   },
   {
     "repo": "expo/skills",
+    "description": "Expo / React Native apps: routing, native UI, modules, EAS builds, updates and store releases",
     "skills": [
       "eas-app-stores",
       "eas-hosting",
@@ -44,6 +47,7 @@
   },
   {
     "repo": "heygen-com/hyperframes",
+    "description": "HyperFrames: make videos, slideshows and motion graphics from HTML, plus Figma import",
     "skills": [
       "figma",
       "hyperframes",
@@ -56,6 +60,7 @@
   },
   {
     "repo": "sanity-io/agent-toolkit",
+    "description": "Sanity CMS: schema/GROQ best practices and migrating content into Sanity",
     "skills": [
       "sanity-best-practices",
       "sanity-migration"
@@ -63,6 +68,7 @@
   },
   {
     "repo": "emilkowalski/skills",
+    "description": "Emil Kowalski's design engineering: UI polish, web/Expo animation, Apple-style design, Swift",
     "skills": [
       "animate",
       "animate-expo",

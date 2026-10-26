@@ -34,10 +34,25 @@ Re-running the installer is safe; it updates everything and re-applies the setup
 | --- | --- | --- |
 | `omp-conductor` plugin | this repo | Jev Router, the `/conductor` command, the `smart-commit` agent |
 | `@dietrichgebert/ponytail` plugin | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | "Lazy senior dev" mode: smallest complete change, `/ponytail`, review/audit commands |
-| 52 skills into `~/.agents/skills` | the repos listed in [`skills.json`](./skills.json), via [`skills`](https://github.com/vercel-labs/skills) | Expo, HyperFrames video, Sanity, UI/animation craft, CodeRabbit review, and more |
+| up to 52 skills into `~/.agents/skills` | the libraries you pick from [`skills.json`](./skills.json), via [`skills`](https://github.com/vercel-labs/skills) | Expo, HyperFrames video, Sanity, UI/animation craft, CodeRabbit review, and more |
 | model roles + fallback chains | [`profiles.json`](./profiles.json) | written into your omp `config.yml` (only the roles listed; your other roles stay) |
 
-Skills are installed straight from their original repositories, so you always get the authors' current versions. A skill repo that fails to install is skipped with a warning; everything else continues.
+Before anything is installed, the installer lists the skill libraries with a one-line description each and asks which you want:
+
+```text
+🎼 Skill libraries (installed into ~/.agents/skills):
+
+  1. coderabbitai/skills (2) — CodeRabbit code review and auto-fixing of PR review comments
+  2. vercel-labs/skills (1) — find-skills: search and install more skills when you need a new capability
+  3. expo/skills (25) — Expo / React Native apps: routing, native UI, modules, EAS builds, updates and store releases
+  4. heygen-com/hyperframes (7) — HyperFrames: make videos, slideshows and motion graphics from HTML, plus Figma import
+  5. sanity-io/agent-toolkit (2) — Sanity CMS: schema/GROQ best practices and migrating content into Sanity
+  6. emilkowalski/skills (15) — Emil Kowalski's design engineering: UI polish, web/Expo animation, Apple-style design, Swift
+
+Install which? e.g. 1,3,6 · Enter = all · none = skip:
+```
+
+Answer once and the rest runs unattended. Non-interactive runs (CI, piped input) install all of them. Skills come straight from their original repositories, so you always get the authors' current versions; a library that fails to install is skipped with a warning and everything else continues.
 
 ## Model setups
 
