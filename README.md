@@ -348,5 +348,5 @@ Maestro is the conductor, not the orchestra. The music is made by these people a
 <br>
 
 <p align="center">
-  <sub>Made with 🎼 by <a href="https://github.com/hsmoviich">hsmoviich</a> — standing on the shoulders of everyone above.</sub>
+  <sub>Made with 🎼 by <a href="https://github.com/hsmoviich">hsmoviich</a> &amp; <a href="https://www.linkedin.com/company/cinnamoncode/">Cinnamon Code</a> — standing on the shoulders of everyone above.</sub>
 </p>
