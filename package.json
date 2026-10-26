@@ -1,6 +1,6 @@
 {
   "name": "omp-maestro",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "My oh-my-pi (omp) harness in one command: a curated collection of public plugins and skills, my Jev router, and switchable Claude / ChatGPT / mixed model setups.",
   "keywords": [
     "omp",
