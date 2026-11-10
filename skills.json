@@ -55,15 +55,25 @@
       "hyperframes-registry",
       "media-use",
       "remotion-to-hyperframes",
-      "slideshow"
+      "reverse-any-video",
+      "slideshow",
+      "style-sampling"
     ]
   },
   {
     "repo": "sanity-io/agent-toolkit",
     "description": "Sanity CMS: schema/GROQ best practices and migrating content into Sanity",
     "skills": [
+      "content-experimentation-best-practices",
+      "content-modeling-best-practices",
+      "portable-text-conversion",
+      "portable-text-serialization",
       "sanity-best-practices",
-      "sanity-migration"
+      "sanity-form-component-suspense",
+      "sanity-migration",
+      "sanity-singletons",
+      "sanity-studio-upgrade",
+      "seo-aeo-best-practices"
     ]
   },
   {
@@ -77,14 +87,102 @@
       "apple-design",
       "ask-sonner",
       "break-ui",
+      "choreograph",
       "emil-design-eng",
       "find-animation-opportunities",
+      "gestures",
       "improve-animations",
       "mobile-native",
       "pick-ui-library",
       "prototype",
+      "remove-animations",
       "review-animations",
       "write-swift"
+    ]
+  },
+  {
+    "repo": "mattpocock/skills",
+    "description": "Matt Pocock's engineering skills: bug diagnosis, codebase design, domain modeling, architecture improvement",
+    "skills": [
+      "codebase-design",
+      "diagnosing-bugs",
+      "domain-modeling",
+      "improve-codebase-architecture"
+    ]
+  },
+  {
+    "repo": "Graphify-Labs/graphify",
+    "description": "Graphify: turn a codebase into a queryable knowledge graph of files, symbols and relationships",
+    "skills": [
+      "graphify"
+    ]
+  },
+  {
+    "repo": "cloudflare/skills",
+    "description": "Cloudflare: Workers, Durable Objects, Wrangler, Agents SDK, Sandbox, frameworks on Cloudflare, web perf",
+    "skills": [
+      "agents-sdk",
+      "basin",
+      "cf-cli",
+      "cloudflare",
+      "cloudflare-app-bootstrap",
+      "cloudflare-email-service",
+      "cloudflare-one",
+      "cloudflare-one-migrations",
+      "durable-objects",
+      "frameworks-on-cloudflare",
+      "gateway-workers",
+      "k2",
+      "nextjs-on-cloudflare",
+      "sandbox-migrate-to-next",
+      "sandbox-next",
+      "sandbox-stable",
+      "turnstile-spin",
+      "web-perf",
+      "workers-best-practices",
+      "workers-development",
+      "workers-profiling",
+      "wrangler"
+    ]
+  },
+  {
+    "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+    "description": "UI/UX Pro Max: searchable local library of UI styles, palettes, font pairings and UX rules (needs Python)",
+    "skills": [
+      "ui-ux-pro-max"
+    ]
+  },
+  {
+    "repo": "kalil0321/reverse-api-engineer",
+    "description": "Reverse API Engineer: turn a website's network traffic into a typed API client",
+    "skills": [
+      "reverse-api-engineer"
+    ]
+  },
+  {
+    "repo": "appariciojunior/video-editor-skills",
+    "description": "AI first-pass video editing in DaVinci Resolve Studio: rough cut, pacing, B-roll, audio, captions (CC BY-NC)",
+    "skills": [
+      "broll",
+      "captions",
+      "edit-video",
+      "figma-roundtrip",
+      "motion-overlays",
+      "music-and-sound",
+      "resolve-scripting",
+      "rough-cut",
+      "video-editor-setup",
+      "vlog-pacing",
+      "voice-and-audio",
+      "youtube-export"
+    ]
+  },
+  {
+    "repo": "guillaumemeyer/watermarks-remover",
+    "description": "Watermarks remover: strip AI provenance marks and metadata, clean invisible Unicode from text",
+    "skills": [
+      "clean-user-facing-text",
+      "remove-ai-marks"
     ]
   }
 ]

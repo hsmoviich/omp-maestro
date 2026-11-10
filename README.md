@@ -65,7 +65,7 @@ bunx omp-maestro mix         # same thing, with bun
 The installer first checks what you already have. Missing **omp** or **git**? It offers to install them for you — omp through the same tool you launched it with (`bunx` → `bun install -g`, `npx` → `npm install -g`, or omp's official installer when Bun isn't there), git through your system's package manager (winget, Homebrew, apt, dnf, pacman, …). Nothing is installed without a yes. Then it asks one question, which skill libraries you want, and runs unattended:
 
 ```text
-🎼 Maestro 0.1.0: checking your setup
+🎼 Maestro 0.2.0: checking your setup
 
   ✔ omp is installed (omp/18.12.6)
   ✔ git (2.52.0)
@@ -77,9 +77,16 @@ The installer first checks what you already have. Missing **omp** or **git**? It
 ❯ ◉ coderabbitai/skills (2) — CodeRabbit code review and auto-fixing of PR review comments
   ◉ vercel-labs/skills (1) — find-skills: search and install more skills when you need a new capability
   ◯ expo/skills (25) — Expo / React Native apps: routing, native UI, modules, EAS builds, updates and store releases
-  ◉ heygen-com/hyperframes (7) — HyperFrames: make videos, slideshows and motion graphics from HTML, plus Figma import
-  ◯ sanity-io/agent-toolkit (2) — Sanity CMS: schema/GROQ best practices and migrating content into Sanity
-  ◉ emilkowalski/skills (15) — Emil Kowalski's design engineering: UI polish, web/Expo animation, Apple-style design, Swift
+  ◉ heygen-com/hyperframes (9) — HyperFrames: make videos, slideshows and motion graphics from HTML, plus Figma import
+  ◯ sanity-io/agent-toolkit (10) — Sanity CMS: schema/GROQ best practices and migrating content into Sanity
+  ◉ emilkowalski/skills (18) — Emil Kowalski's design engineering: UI polish, web/Expo animation, Apple-style design, Swift
+  ◉ mattpocock/skills (4) — Matt Pocock's engineering skills: bug diagnosis, codebase design, domain modeling, architecture
+  ◉ Graphify-Labs/graphify (1) — Graphify: turn a codebase into a queryable knowledge graph of files, symbols and relationships
+  ◯ cloudflare/skills (22) — Cloudflare: Workers, Durable Objects, Wrangler, Agents SDK, Sandbox, frameworks on Cloudflare
+  ◉ nextlevelbuilder/ui-ux-pro-max-skill (1) — UI/UX Pro Max: searchable local library of UI styles, palettes, font pairings
+  ◉ kalil0321/reverse-api-engineer (1) — Reverse API Engineer: turn a website's network traffic into a typed API client
+  ◯ appariciojunior/video-editor-skills (12) — AI first-pass video editing in DaVinci Resolve Studio (CC BY-NC)
+  ◯ guillaumemeyer/watermarks-remover (2) — Watermarks remover: strip AI provenance marks and metadata, clean invisible Unicode
 ```
 
 Then, inside omp:
@@ -225,7 +232,7 @@ All thresholds live in the `CONFIG` block at the top of [`extensions/jev-router.
 | :-: | --- | --- | --- |
 | 🎼 | **omp-maestro** | this repo | Jev Router, `/maestro`, the `smart-commit` agent |
 | 🐴 | **ponytail** | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | "Lazy senior dev" mode — the smallest complete change |
-| 🧰 | **up to 52 skills** | [`skills.json`](./skills.json), via the [`skills`](https://github.com/vercel-labs/skills) CLI | the libraries you tick in the checklist |
+| 🧰 | **up to 108 skills** | [`skills.json`](./skills.json), via the [`skills`](https://github.com/vercel-labs/skills) CLI | the libraries you tick in the checklist |
 | 🎚️ | **model roles + fallbacks** | [`profiles.json`](./profiles.json) | written to your omp `config.yml` — only the roles listed |
 
 Skills come straight from their authors' repositories, so you always get the current versions. A library that fails to install is skipped with a warning; everything else carries on.
@@ -331,6 +338,38 @@ Maestro is the conductor, not the orchestra. The music is made by these people a
     <td align="center" valign="top">
       <a href="https://github.com/coderabbitai/skills"><img src="https://github.com/coderabbitai.png?size=128" width="64" height="64" alt=""><br><b>coderabbitai/skills</b></a><br>
       <sub>CodeRabbit<br>code review &amp; autofix</sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://github.com/mattpocock/skills"><img src="https://github.com/mattpocock.png?size=128" width="64" height="64" alt=""><br><b>mattpocock/skills</b></a><br>
+      <sub>Matt Pocock<br>engineering skills</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://github.com/Graphify-Labs/graphify"><img src="https://github.com/Graphify-Labs.png?size=128" width="64" height="64" alt=""><br><b>Graphify</b></a><br>
+      <sub>Graphify Labs<br>codebase knowledge graphs</sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://github.com/cloudflare/skills"><img src="https://github.com/cloudflare.png?size=128" width="64" height="64" alt=""><br><b>cloudflare/skills</b></a><br>
+      <sub>Cloudflare<br>Workers &amp; the Cloudflare platform</sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"><img src="https://github.com/nextlevelbuilder.png?size=128" width="64" height="64" alt=""><br><b>UI/UX Pro Max</b></a><br>
+      <sub>Next Level Builder<br>UI/UX design intelligence</sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://github.com/kalil0321/reverse-api-engineer"><img src="https://github.com/kalil0321.png?size=128" width="64" height="64" alt=""><br><b>reverse-api-engineer</b></a><br>
+      <sub>kalil0321<br>website traffic → API clients</sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top">
+      <a href="https://github.com/appariciojunior/video-editor-skills"><img src="https://github.com/appariciojunior.png?size=128" width="64" height="64" alt=""><br><b>video-editor-skills</b></a><br>
+      <sub>appariciojunior<br>DaVinci Resolve video editing</sub>
+    </td>
+    <td align="center" valign="top">
+      <a href="https://github.com/guillaumemeyer/watermarks-remover"><img src="https://github.com/guillaumemeyer.png?size=128" width="64" height="64" alt=""><br><b>watermarks-remover</b></a><br>
+      <sub>Guillaume Meyer<br>AI marks &amp; metadata cleanup</sub>
     </td>
     <td align="center" valign="top">
       <a href="https://exa.ai"><img src="https://github.com/exa-labs.png?size=128" width="64" height="64" alt=""><br><b>Exa</b></a><br>
