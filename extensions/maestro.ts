@@ -4,6 +4,7 @@ import profiles from "../profiles.json" with { type: "json" };
 
 type Profile = {
   description: string;
+  warning?: string;
   modelRoles: Record<string, string>;
   fallbackChains: Record<string, string[]>;
 };
@@ -12,7 +13,7 @@ const PROFILES: Record<string, Profile> = profiles;
 const NAMES = Object.keys(PROFILES);
 
 /**
- * /maestro [anthropic|openai|mix]
+ * /maestro [anthropic|openai|mix|claude fable]
  *
  * Writes the chosen setup's model roles and fallback chains into the global
  * config (only the roles the setup defines; other roles are left alone) and
@@ -36,20 +37,21 @@ export default function maestro(pi: ExtensionAPI) {
   pi.registerCommand("maestro", {
     description: `Switch the model setup: ${NAMES.join(" | ")}`,
     getArgumentCompletions: (prefix: string) =>
-      NAMES.filter((name) => name.startsWith(prefix)).map((name) => ({
+      NAMES.filter((name) => name.startsWith(prefix.toLowerCase().replace(/\s+/g, "-"))).map((name) => ({
         value: name,
         label: name,
-        description: PROFILES[name].description,
+        description: [PROFILES[name].warning, PROFILES[name].description].filter(Boolean).join(" "),
       })),
     handler: async (args, ctx) => {
-      const name = args.trim().toLowerCase();
+      // "claude fable" and "claude-fable" both select the claude-fable setup.
+      const name = args.trim().toLowerCase().replace(/\s+/g, "-");
       const profile = PROFILES[name];
 
       if (!profile) {
         ctx.ui.notify(
           [
             `Maestro: active setup = ${active()}`,
-            ...NAMES.map((n) => `  /maestro ${n} — ${PROFILES[n].description}`),
+            ...NAMES.map((n) => `  /maestro ${n} — ${[PROFILES[n].warning, PROFILES[n].description].filter(Boolean).join(" ")}`),
           ].join("\n"),
           name ? "warning" : "info",
         );
@@ -80,6 +82,8 @@ export default function maestro(pi: ExtensionAPI) {
           (model ? "" : ` (could not resolve ${selector}; log in to that provider, then run /model)`),
         model ? "info" : "warning",
       );
+      // omp prints "Warning: " in its warning colour; the text itself is forced red with ANSI.
+      if (profile.warning) ctx.ui.notify(`\x1b[1;31m${profile.warning}\x1b[0m`, "warning");
     },
   });
 }

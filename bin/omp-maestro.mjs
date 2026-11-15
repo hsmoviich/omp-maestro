@@ -13,7 +13,8 @@ const pkg = read("package.json");
 const profiles = read("profiles.json");
 const skills = read("skills.json");
 
-const setup = (process.argv[2] ?? "mix").toLowerCase();
+// `omp-maestro claude fable` and `omp-maestro claude-fable` both work.
+const setup = (process.argv.slice(2).join("-") || "mix").toLowerCase();
 if (!profiles[setup]) {
   console.error(`Usage: omp-maestro [${Object.keys(profiles).join("|")}]`);
   process.exit(1);
@@ -219,7 +220,7 @@ for (const [key, field] of [["modelRoles", "modelRoles"], ["retry.fallbackChains
 }
 
 console.log(`
-✔ Maestro is leading with the "${setup}" setup — ${profiles[setup].description}
+✔ Maestro is leading with the "${setup}" setup — ${profiles[setup].description}${profiles[setup].warning ? `\n\x1b[1;31m⚠ ${profiles[setup].warning}\x1b[0m` : ""}
 
 Next:
   • Jev routing needs a TypeSafe key: export TYPESAFE_API_KEY or add it to ~/.omp/agent/.env

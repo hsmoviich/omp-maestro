@@ -65,7 +65,7 @@ bunx omp-maestro mix         # same thing, with bun
 The installer first checks what you already have. Missing **omp** or **git**? It offers to install them for you — omp through the same tool you launched it with (`bunx` → `bun install -g`, `npx` → `npm install -g`, or omp's official installer when Bun isn't there), git through your system's package manager (winget, Homebrew, apt, dnf, pacman, …). Nothing is installed without a yes. Then it asks one question, which skill libraries you want, and runs unattended:
 
 ```text
-🎼 Maestro 0.2.0: checking your setup
+🎼 Maestro 0.3.0: checking your setup
 
   ✔ omp is installed (omp/18.12.6)
   ✔ git (2.52.0)
@@ -113,6 +113,7 @@ Switch inside omp at any time — the live session moves to the new lead model i
 /maestro mix          Claude leads, GPT codes, Sonnet designs
 /maestro anthropic    all Claude
 /maestro openai       all ChatGPT / Codex
+/maestro claude fable Claude Fable 5.2 leads and plans at max, codes at xhigh — HIGH TOKEN USAGE!
 ```
 
 Only the roles an ensemble defines are rewritten; any other roles you've set stay untouched. Every role also gets a **fallback chain** — single-provider ensembles fall back within that provider, the mix falls back *across* providers, so hitting a usage limit on one plan doesn't stop the music.
@@ -121,19 +122,19 @@ Only the roles an ensemble defines are rewritten; any other roles you've set sta
 <summary><b>Every role, every ensemble</b></summary>
 <br>
 
-| Role | `anthropic` | `openai` | `mix` |
-| --- | --- | --- | --- |
-| `default` — main agent, the lead | Claude Opus 5.5 · medium | GPT-6.1 Sol · medium | **Claude Opus 5.5** · medium |
-| `plan`, `slow` | Claude Opus 5.5 · high | GPT-6.1 Sol · high | Claude Opus 5.5 · high |
-| `task` — default subagent, writes code | Claude Sonnet 5.5 | GPT-6.1 Sol | **GPT-6.1 Sol** |
-| `designer`, `vision` | Claude Sonnet 5.5 | GPT-6.1 Sol | Claude Sonnet 5.5 |
-| `smol`, `tiny`, `memory`, `commit` | Claude Haiku 5.5 · low | GPT-6 Luna · low | GPT-6 Luna · low |
-| `jev-mechanical` | Claude Haiku 5.5 · low | GPT-6 Luna · low | GPT-6 Luna · low |
-| `jev-bounded` | Claude Haiku 5.5 · medium | GPT-6 Luna · medium | GPT-6 Luna · medium |
-| `jev-reasoning` | Claude Sonnet 5.5 | GPT-6.1 Sol | GPT-6.1 Sol |
-| `jev-architecture` | Claude Opus 5.5 · high | GPT-6.1 Sol · high | GPT-6.1 Sol · high |
-| `judge` | TypeSafe Jev | TypeSafe Jev | TypeSafe Jev |
-| `web` | Exa → DuckDuckGo | Exa → DuckDuckGo | Exa → DuckDuckGo |
+| Role | `anthropic` | `openai` | `mix` | `claude-fable` |
+| --- | --- | --- | --- | --- |
+| `default` — main agent, the lead | Claude Opus 5.5 · medium | GPT-6.1 Sol · medium | **Claude Opus 5.5** · medium | **Claude Fable 5.2** · max |
+| `plan`, `slow` | Claude Opus 5.5 · high | GPT-6.1 Sol · high | Claude Opus 5.5 · high | Claude Fable 5.2 · max |
+| `task` — default subagent, writes code | Claude Sonnet 5.5 | GPT-6.1 Sol | **GPT-6.1 Sol** | **Claude Fable 5.2** · xhigh |
+| `designer`, `vision` | Claude Sonnet 5.5 | GPT-6.1 Sol | Claude Sonnet 5.5 | Claude Sonnet 5.5 |
+| `smol`, `tiny`, `memory`, `commit` | Claude Haiku 5.5 · low | GPT-6 Luna · low | GPT-6 Luna · low | Claude Haiku 5.5 · low |
+| `jev-mechanical` | Claude Haiku 5.5 · low | GPT-6 Luna · low | GPT-6 Luna · low | GPT-6.1 Sol · low |
+| `jev-bounded` | Claude Haiku 5.5 · medium | GPT-6 Luna · medium | GPT-6 Luna · medium | Claude Fable 5.2 · xhigh |
+| `jev-reasoning` | Claude Sonnet 5.5 | GPT-6.1 Sol | GPT-6.1 Sol | Claude Fable 5.2 · xhigh |
+| `jev-architecture` | Claude Opus 5.5 · high | GPT-6.1 Sol · high | GPT-6.1 Sol · high | Claude Fable 5.2 · xhigh |
+| `judge` | TypeSafe Jev | TypeSafe Jev | TypeSafe Jev | TypeSafe Jev |
+| `web` | Exa → DuckDuckGo | Exa → DuckDuckGo | Exa → DuckDuckGo | Exa → DuckDuckGo |
 
 Fallback chains for every role live in [`profiles.json`](./profiles.json).
 
@@ -215,7 +216,7 @@ All thresholds live in the `CONFIG` block at the top of [`extensions/jev-router.
 | Command | What it does |
 | --- | --- |
 | `/maestro` | Show the active ensemble and the choices |
-| `/maestro mix` · `anthropic` · `openai` | Switch ensemble; the live session follows |
+| `/maestro mix` · `anthropic` · `openai` · `claude fable` | Switch ensemble; the live session follows |
 | `/jev-route status` | Router counters and the last decision |
 | `/jev-route on` · `off` | Turn routing on or off for this session |
 | `/jev-route verbose` · `quiet` | Show or hide each routing decision |

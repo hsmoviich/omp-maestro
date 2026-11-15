@@ -121,5 +121,47 @@
       "jev-reasoning": ["openai-codex/gpt-6-sol:medium", "anthropic/claude-sonnet-5-5:medium"],
       "jev-architecture": ["openai-codex/gpt-6-sol:high", "anthropic/claude-opus-5-5:high"]
     }
+  },
+  "claude-fable": {
+    "description": "Claude Fable 5.2 leads and plans at max, codes at xhigh; GPT-6.1 Sol takes the easy jobs, Sonnet designs, Haiku handles the small stuff",
+    "warning": "HIGH TOKEN USAGE!",
+    "modelRoles": {
+      "default": "anthropic/claude-fable-5-2:max",
+      "plan": "anthropic/claude-fable-5-2:max",
+      "slow": "anthropic/claude-fable-5-2:max",
+      "task": "anthropic/claude-fable-5-2:xhigh",
+      "designer": "anthropic/claude-sonnet-5-5:medium",
+      "vision": "anthropic/claude-sonnet-5-5:medium",
+      "advisor": "anthropic/claude-opus-5-5:medium",
+      "smol": "anthropic/claude-haiku-5-5:low",
+      "tiny": "anthropic/claude-haiku-5-5:low",
+      "memory": "anthropic/claude-haiku-5-5:low",
+      "commit": "anthropic/claude-haiku-5-5:low",
+      "judge": "typesafe/jev-latest",
+      "web": "web/exa",
+      "jev-mechanical": "openai-codex/gpt-6.1-sol:low",
+      "jev-bounded": "anthropic/claude-fable-5-2:xhigh",
+      "jev-reasoning": "anthropic/claude-fable-5-2:xhigh",
+      "jev-architecture": "anthropic/claude-fable-5-2:xhigh"
+    },
+    "fallbackChains": {
+      "default": ["anthropic/claude-opus-5-5:high"],
+      "plan": ["anthropic/claude-opus-5-5:high"],
+      "slow": ["anthropic/claude-opus-5-5:high"],
+      "task": ["anthropic/claude-opus-5-5:high"],
+      "designer": ["anthropic/claude-opus-5-5:medium"],
+      "vision": ["anthropic/claude-opus-5-5:medium"],
+      "advisor": ["anthropic/claude-sonnet-5-5:medium"],
+      "smol": ["anthropic/claude-sonnet-5-5:low"],
+      "tiny": ["anthropic/claude-sonnet-5-5:low"],
+      "memory": ["anthropic/claude-sonnet-5-5:low"],
+      "commit": ["anthropic/claude-sonnet-5-5:low"],
+      "judge": ["typesafe/jev-preview", "@tiny", "@smol", "@default"],
+      "web": ["web/duckduckgo"],
+      "jev-mechanical": ["openai-codex/gpt-6-sol:low", "anthropic/claude-haiku-5-5:low"],
+      "jev-bounded": ["anthropic/claude-opus-5-5:high"],
+      "jev-reasoning": ["anthropic/claude-opus-5-5:high"],
+      "jev-architecture": ["anthropic/claude-opus-5-5:high"]
+    }
   }
 }
