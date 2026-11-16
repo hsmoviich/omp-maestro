@@ -84,7 +84,7 @@
   "mix": {
     "description": "Claude Opus orchestrates and plans, GPT Sol/Luna do the coding, Claude Sonnet does design and vision",
     "modelRoles": {
-      "default": "anthropic/claude-opus-5-5:medium",
+      "default": "anthropic/claude-opus-5-5:high",
       "plan": "anthropic/claude-opus-5-5:high",
       "slow": "anthropic/claude-opus-5-5:high",
       "task": "openai-codex/gpt-6.1-sol:medium",

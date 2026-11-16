@@ -124,7 +124,7 @@ Only the roles an ensemble defines are rewritten; any other roles you've set sta
 
 | Role | `anthropic` | `openai` | `mix` | `claude-fable` |
 | --- | --- | --- | --- | --- |
-| `default` — main agent, the lead | Claude Opus 5.5 · medium | GPT-6.1 Sol · medium | **Claude Opus 5.5** · medium | **Claude Fable 5.2** · max |
+| `default` — main agent, the lead | Claude Opus 5.5 · medium | GPT-6.1 Sol · medium | **Claude Opus 5.5** · high | **Claude Fable 5.2** · max |
 | `plan`, `slow` | Claude Opus 5.5 · high | GPT-6.1 Sol · high | Claude Opus 5.5 · high | Claude Fable 5.2 · max |
 | `task` — default subagent, writes code | Claude Sonnet 5.5 | GPT-6.1 Sol | **GPT-6.1 Sol** | **Claude Fable 5.2** · xhigh |
 | `designer`, `vision` | Claude Sonnet 5.5 | GPT-6.1 Sol | Claude Sonnet 5.5 | Claude Sonnet 5.5 |
