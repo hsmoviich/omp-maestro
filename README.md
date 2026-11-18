@@ -103,7 +103,7 @@ Then, inside omp:
 ## 🎻 Three ensembles
 
 <p align="center">
-  <img src="assets/ensembles.svg" width="100%" alt="anthropic: Claude Opus leads, Sonnet codes and designs, Haiku takes small parts. openai: GPT-6.1 Sol leads, codes and designs, GPT-6 Luna takes small parts. mix (default): Claude Opus leads, GPT-6.1 Sol codes, Claude Sonnet designs, GPT-6 Luna takes small parts.">
+  <img src="assets/ensembles.svg" width="100%" alt="anthropic: Claude Opus leads, Sonnet codes and designs, Haiku takes small parts. openai: GPT-6.2 Sol leads, codes and designs, GPT-6 Luna takes small parts. mix (default): Claude Opus leads, GPT-6.2 Sol codes, Claude Sonnet designs, GPT-6 Luna takes small parts.">
 </p>
 
 Switch inside omp at any time — the live session moves to the new lead model immediately:
@@ -124,15 +124,15 @@ Only the roles an ensemble defines are rewritten; any other roles you've set sta
 
 | Role | `anthropic` | `openai` | `mix` | `claude-fable` |
 | --- | --- | --- | --- | --- |
-| `default` — main agent, the lead | Claude Opus 5.5 · medium | GPT-6.1 Sol · medium | **Claude Opus 5.5** · high | **Claude Fable 5.2** · max |
-| `plan`, `slow` | Claude Opus 5.5 · high | GPT-6.1 Sol · high | Claude Opus 5.5 · high | Claude Fable 5.2 · max |
-| `task` — default subagent, writes code | Claude Sonnet 5.5 | GPT-6.1 Sol | **GPT-6.1 Sol** | **Claude Fable 5.2** · xhigh |
-| `designer`, `vision` | Claude Sonnet 5.5 | GPT-6.1 Sol | Claude Sonnet 5.5 | Claude Sonnet 5.5 |
+| `default` — main agent, the lead | Claude Opus 5.5 · medium | GPT-6.2 Sol · medium | **Claude Opus 5.5** · high | **Claude Fable 5.2** · max |
+| `plan`, `slow` | Claude Opus 5.5 · high | GPT-6.2 Sol · high | Claude Opus 5.5 · high | Claude Fable 5.2 · max |
+| `task` — default subagent, writes code | Claude Sonnet 5.5 | GPT-6.2 Sol | **GPT-6.2 Sol** | **Claude Fable 5.2** · xhigh |
+| `designer`, `vision` | Claude Sonnet 5.5 | GPT-6.2 Sol | Claude Sonnet 5.5 | Claude Sonnet 5.5 |
 | `smol`, `tiny`, `memory`, `commit` | Claude Haiku 5.5 · low | GPT-6 Luna · low | GPT-6 Luna · low | Claude Haiku 5.5 · low |
-| `jev-mechanical` | Claude Haiku 5.5 · low | GPT-6 Luna · low | GPT-6 Luna · low | GPT-6.1 Sol · low |
+| `jev-mechanical` | Claude Haiku 5.5 · low | GPT-6 Luna · low | GPT-6 Luna · low | GPT-6.2 Sol · low |
 | `jev-bounded` | Claude Haiku 5.5 · medium | GPT-6 Luna · medium | GPT-6 Luna · medium | Claude Fable 5.2 · xhigh |
-| `jev-reasoning` | Claude Sonnet 5.5 | GPT-6.1 Sol | GPT-6.1 Sol | Claude Fable 5.2 · xhigh |
-| `jev-architecture` | Claude Opus 5.5 · high | GPT-6.1 Sol · high | GPT-6.1 Sol · high | Claude Fable 5.2 · xhigh |
+| `jev-reasoning` | Claude Sonnet 5.5 | GPT-6.2 Sol | GPT-6.2 Sol | Claude Fable 5.2 · xhigh |
+| `jev-architecture` | Claude Opus 5.5 · high | GPT-6.2 Sol · high | GPT-6.2 Sol · high | Claude Fable 5.2 · xhigh |
 | `judge` | TypeSafe Jev | TypeSafe Jev | TypeSafe Jev | TypeSafe Jev |
 | `web` | Exa → DuckDuckGo | Exa → DuckDuckGo | Exa → DuckDuckGo | Exa → DuckDuckGo |
 

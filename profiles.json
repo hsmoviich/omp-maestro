@@ -41,14 +41,14 @@
     }
   },
   "openai": {
-    "description": "ChatGPT/Codex only: GPT-6.1 Sol thinks and codes, GPT-6 Luna handles the small stuff",
+    "description": "ChatGPT/Codex only: GPT-6.2 Sol thinks and codes, GPT-6 Luna handles the small stuff",
     "modelRoles": {
-      "default": "openai-codex/gpt-6.1-sol:medium",
-      "plan": "openai-codex/gpt-6.1-sol:high",
-      "slow": "openai-codex/gpt-6.1-sol:high",
-      "task": "openai-codex/gpt-6.1-sol:medium",
-      "designer": "openai-codex/gpt-6.1-sol:medium",
-      "vision": "openai-codex/gpt-6.1-sol:medium",
+      "default": "openai-codex/gpt-6.2-sol:medium",
+      "plan": "openai-codex/gpt-6.2-sol:high",
+      "slow": "openai-codex/gpt-6.2-sol:high",
+      "task": "openai-codex/gpt-6.2-sol:medium",
+      "designer": "openai-codex/gpt-6.2-sol:medium",
+      "vision": "openai-codex/gpt-6.2-sol:medium",
       "advisor": "openai-codex/gpt-6-sol:medium",
       "smol": "openai-codex/gpt-6-luna:low",
       "tiny": "openai-codex/gpt-6-luna:low",
@@ -58,8 +58,8 @@
       "web": "web/exa",
       "jev-mechanical": "openai-codex/gpt-6-luna:low",
       "jev-bounded": "openai-codex/gpt-6-luna:medium",
-      "jev-reasoning": "openai-codex/gpt-6.1-sol:medium",
-      "jev-architecture": "openai-codex/gpt-6.1-sol:high"
+      "jev-reasoning": "openai-codex/gpt-6.2-sol:medium",
+      "jev-architecture": "openai-codex/gpt-6.2-sol:high"
     },
     "fallbackChains": {
       "default": ["openai-codex/gpt-6-sol:medium", "openai-codex/gpt-5.6-sol:medium"],
@@ -75,8 +75,8 @@
       "commit": ["openai-codex/gpt-6-sol:low"],
       "judge": ["typesafe/jev-preview", "@tiny", "@smol", "@default"],
       "web": ["web/duckduckgo"],
-      "jev-mechanical": ["openai-codex/gpt-6.1-sol:medium", "openai-codex/gpt-6-sol:medium"],
-      "jev-bounded": ["openai-codex/gpt-6.1-sol:medium", "openai-codex/gpt-6-sol:medium"],
+      "jev-mechanical": ["openai-codex/gpt-6.2-sol:medium", "openai-codex/gpt-6-sol:medium"],
+      "jev-bounded": ["openai-codex/gpt-6.2-sol:medium", "openai-codex/gpt-6-sol:medium"],
       "jev-reasoning": ["openai-codex/gpt-6-sol:medium", "openai-codex/gpt-6-luna:medium"],
       "jev-architecture": ["openai-codex/gpt-6-sol:high", "openai-codex/gpt-6-luna:high"]
     }
@@ -87,7 +87,7 @@
       "default": "anthropic/claude-opus-5-5:high",
       "plan": "anthropic/claude-opus-5-5:high",
       "slow": "anthropic/claude-opus-5-5:high",
-      "task": "openai-codex/gpt-6.1-sol:medium",
+      "task": "openai-codex/gpt-6.2-sol:medium",
       "designer": "anthropic/claude-sonnet-5-5:medium",
       "vision": "anthropic/claude-sonnet-5-5:medium",
       "advisor": "openai-codex/gpt-5.6-sol:medium",
@@ -99,8 +99,8 @@
       "web": "web/exa",
       "jev-mechanical": "openai-codex/gpt-6-luna:low",
       "jev-bounded": "openai-codex/gpt-6-luna:medium",
-      "jev-reasoning": "openai-codex/gpt-6.1-sol:medium",
-      "jev-architecture": "openai-codex/gpt-6.1-sol:high"
+      "jev-reasoning": "openai-codex/gpt-6.2-sol:medium",
+      "jev-architecture": "openai-codex/gpt-6.2-sol:high"
     },
     "fallbackChains": {
       "default": ["openai-codex/gpt-5.6-sol:medium", "openai-codex/gpt-6-sol:medium"],
@@ -116,14 +116,14 @@
       "commit": ["openai-codex/gpt-6-sol:low"],
       "judge": ["typesafe/jev-preview", "@tiny", "@smol", "@default"],
       "web": ["web/duckduckgo"],
-      "jev-mechanical": ["openai-codex/gpt-6.1-sol:medium", "anthropic/claude-haiku-5-5:low"],
-      "jev-bounded": ["openai-codex/gpt-6.1-sol:medium", "anthropic/claude-sonnet-5-5:medium"],
+      "jev-mechanical": ["openai-codex/gpt-6.2-sol:medium", "anthropic/claude-haiku-5-5:low"],
+      "jev-bounded": ["openai-codex/gpt-6.2-sol:medium", "anthropic/claude-sonnet-5-5:medium"],
       "jev-reasoning": ["openai-codex/gpt-6-sol:medium", "anthropic/claude-sonnet-5-5:medium"],
       "jev-architecture": ["openai-codex/gpt-6-sol:high", "anthropic/claude-opus-5-5:high"]
     }
   },
   "claude-fable": {
-    "description": "Claude Fable 5.2 leads and plans at max, codes at xhigh; GPT-6.1 Sol takes the easy jobs, Sonnet designs, Haiku handles the small stuff",
+    "description": "Claude Fable 5.2 leads and plans at max, codes at xhigh; GPT-6.2 Sol takes the easy jobs, Sonnet designs, Haiku handles the small stuff",
     "warning": "HIGH TOKEN USAGE!",
     "modelRoles": {
       "default": "anthropic/claude-fable-5-2:max",
@@ -139,7 +139,7 @@
       "commit": "anthropic/claude-haiku-5-5:low",
       "judge": "typesafe/jev-latest",
       "web": "web/exa",
-      "jev-mechanical": "openai-codex/gpt-6.1-sol:low",
+      "jev-mechanical": "openai-codex/gpt-6.2-sol:low",
       "jev-bounded": "anthropic/claude-fable-5-2:xhigh",
       "jev-reasoning": "anthropic/claude-fable-5-2:xhigh",
       "jev-architecture": "anthropic/claude-fable-5-2:xhigh"

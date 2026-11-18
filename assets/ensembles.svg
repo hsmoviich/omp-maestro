@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 540" width="1280" height="540" role="img" aria-labelledby="t d">
   <title id="t">The three Maestro ensembles</title>
-  <desc id="d">anthropic: Claude Opus leads, Claude Sonnet codes and designs, Claude Haiku takes small parts. openai: GPT-6.1 Sol leads, codes and designs, GPT-6 Luna takes small parts. mix (default): Claude Opus leads, GPT-6.1 Sol codes, Claude Sonnet designs, GPT-6 Luna takes small parts.</desc>
+  <desc id="d">anthropic: Claude Opus leads, Claude Sonnet codes and designs, Claude Haiku takes small parts. openai: GPT-6.2 Sol leads, codes and designs, GPT-6 Luna takes small parts. mix (default): Claude Opus leads, GPT-6.2 Sol codes, Claude Sonnet designs, GPT-6 Luna takes small parts.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0B0C16"/><stop offset="1" stop-color="#141632"/></linearGradient>
     <linearGradient id="mixEdge" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E07A5F"/><stop offset="0.5" stop-color="#8B6CF6"/><stop offset="1" stop-color="#19C39C"/></linearGradient>
@@ -42,11 +42,11 @@
     <line class="rule" x1="30" y1="110" x2="348" y2="110"/>
     <g class="ui">
       <text class="label" x="30" y="146">LEADS &amp; PLANS</text>
-      <circle cx="38" cy="172" r="6" fill="#19C39C"/><text class="model" x="54" y="179">GPT-6.1 Sol</text>
+      <circle cx="38" cy="172" r="6" fill="#19C39C"/><text class="model" x="54" y="179">GPT-6.2 Sol</text>
       <text class="label" x="30" y="216">WRITES THE CODE</text>
-      <circle cx="38" cy="242" r="6" fill="#19C39C"/><text class="model" x="54" y="249">GPT-6.1 Sol</text>
+      <circle cx="38" cy="242" r="6" fill="#19C39C"/><text class="model" x="54" y="249">GPT-6.2 Sol</text>
       <text class="label" x="30" y="286">DESIGN &amp; VISION</text>
-      <circle cx="38" cy="312" r="6" fill="#19C39C"/><text class="model" x="54" y="319">GPT-6.1 Sol</text>
+      <circle cx="38" cy="312" r="6" fill="#19C39C"/><text class="model" x="54" y="319">GPT-6.2 Sol</text>
       <text class="label" x="30" y="356">SMALL PARTS</text>
       <circle cx="38" cy="382" r="6" fill="#19C39C"/><text class="model" x="54" y="389">GPT-6 Luna</text>
     </g>
@@ -65,7 +65,7 @@
       <text class="label" x="30" y="146">LEADS &amp; PLANS</text>
       <circle cx="38" cy="172" r="6" fill="#E07A5F"/><text class="model" x="54" y="179">Claude Opus 5.5</text>
       <text class="label" x="30" y="216">WRITES THE CODE</text>
-      <circle cx="38" cy="242" r="6" fill="#19C39C"/><text class="model" x="54" y="249">GPT-6.1 Sol</text>
+      <circle cx="38" cy="242" r="6" fill="#19C39C"/><text class="model" x="54" y="249">GPT-6.2 Sol</text>
       <text class="label" x="30" y="286">DESIGN &amp; VISION</text>
       <circle cx="38" cy="312" r="6" fill="#E07A5F"/><text class="model" x="54" y="319">Claude Sonnet 5.5</text>
       <text class="label" x="30" y="356">SMALL PARTS</text>
